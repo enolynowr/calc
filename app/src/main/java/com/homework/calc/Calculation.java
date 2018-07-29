@@ -59,13 +59,12 @@ public class Calculation {
         return true;
     }
 
-    // ブランクチェック
+    // 小数点以下の処理（下2桁まで）
     protected String convertNum(double num) {
         double _num = num;
         if ((_num - ((int) _num)) == 0) {
-            Log.d("if", ">>>" + String.valueOf((int) _num));
-
             return String.valueOf((int) _num);
+
         } else{
             double n = Math.pow(10.0, Const.DECIMAL_POINT);
             _num = Math.round(_num*n)/n;
