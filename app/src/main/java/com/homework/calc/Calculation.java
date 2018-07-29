@@ -1,30 +1,26 @@
 package com.homework.calc;
 
 
+import android.util.Log;
+
 public class Calculation {
 
-    Item item = new Item();
-
     // Running process
-    protected String runCalc(double _firstNum, double _secondNum) {
-        if (item.calcSign.equals(Const.DIVIDE_SIGN)) {
-            item.resultNum = divideNum(_firstNum, _secondNum);
-            return String.valueOf(item.resultNum);
+    protected double runCalc(double _firstNum, double _secondNum, String _calcSign) {
+        if (_calcSign.equals(Const.DIVIDE_SIGN)) {
+            return divideNum(_firstNum, _secondNum);
 
-        } else if (item.calcSign.equals(Const.MULTIPLY_SIGN)) {
-            item.resultNum = multiplyNum(_firstNum, _secondNum);
-            return String.valueOf(item.resultNum);
+        } else if (_calcSign.equals(Const.MULTIPLY_SIGN)) {
+            return multiplyNum(_firstNum, _secondNum);
 
-        } else if (item.calcSign.equals(Const.ADD_SIGN)) {
-            item.resultNum = addNum(_firstNum, _secondNum);
-            return String.valueOf(item.resultNum);
+        } else if (_calcSign.equals(Const.ADD_SIGN)) {
+            return addNum(_firstNum, _secondNum);
 
-        } else if (item.calcSign.equals(Const.SUBTRACT_SIGN)) {
-            item.resultNum = subtractNum(_firstNum, _secondNum);
-            return String.valueOf(item.resultNum);
+        } else if (_calcSign.equals(Const.SUBTRACT_SIGN)) {
+            return subtractNum(_firstNum, _secondNum);
         }
 
-        return String.valueOf(0.0);
+        return 0.0;
     }
 
 
@@ -61,6 +57,21 @@ public class Calculation {
             return false;
         }
         return true;
+    }
+
+    // ブランクチェック
+    protected String convertNum(double num) {
+        double _num = num;
+        if ((_num - ((int) _num)) == 0) {
+            Log.d("if", ">>>" + String.valueOf((int) _num));
+
+            return String.valueOf((int) _num);
+        } else{
+            double n = Math.pow(10.0, Const.DECIMAL_POINT);
+            _num = Math.round(_num*n)/n;
+        }
+
+        return String.valueOf(_num);
     }
 }
 

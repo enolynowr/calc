@@ -19,6 +19,7 @@
     <string name="division">/</string>
     <string name="equal">=</string>
     <string name="clear">C</string>
+    <string name="error_input_num">数字を入力してください。</string>
 
 
 </resources>

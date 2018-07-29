@@ -31,15 +31,15 @@
                 android:id="@+id/stand_by_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="32dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/input_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{item.resultNum == 0.0 ? "" : String.valueOf(item.resultNum)}' />
+                android:textSize="32dp"/>
 
         </LinearLayout>
 

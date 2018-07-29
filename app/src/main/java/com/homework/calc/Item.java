@@ -1,21 +1,9 @@
 package com.homework.calc;
 
 public class Item {
-
     double firstNum;
     double secondNum;
-
-    public double getSecondNum() {
-        return secondNum;
-    }
-
-    public void setSecondNum(double secondNum) {
-        this.secondNum = secondNum;
-    }
-
-    double resultNum;
     String calcSign;
-
 
     public double getFirstNum() {
         return firstNum;
@@ -25,12 +13,12 @@ public class Item {
         this.firstNum = firstNum;
     }
 
-    public double getResultNum() {
-        return resultNum;
+    public double getSecondNum() {
+        return secondNum;
     }
 
-    public void setResultNum(double resultNum) {
-        this.resultNum = resultNum;
+    public void setSecondNum(double secondNum) {
+        this.secondNum = secondNum;
     }
 
     public String getCalcSign() {
