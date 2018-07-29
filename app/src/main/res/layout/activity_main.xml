@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="calcModel"
+            type="com.homework.calc.Calculation" />
+
+        <variable
+            name="item"
+            type="com.homework.calc.Item" />
+
+        <variable
+            name="onOkClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/LayoutNumVertical">
+
+            <TextView
+                android:id="@+id/stand_by_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/input_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{item.resultNum == 0.0 ? "" : String.valueOf(item.resultNum)}' />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/LayoutNum">
+
+            <Button
+                android:id="@+id/num_7"
+                style="@style/BtnNum"
+                android:text="@string/num_7" />
+
+            <Button
+                android:id="@+id/num_8"
+                style="@style/BtnNum"
+                android:text="@string/num_8" />
+
+            <Button
+                android:id="@+id/num_9"
+                style="@style/BtnNum"
+                android:text="@string/num_9" />
+
+            <Button
+                android:id="@+id/divide"
+                style="@style/BtnCalc"
+                android:onClick="@{onOkClick::onClick}"
+                android:text="@string/division" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LayoutNum">
+
+            <Button
+                android:id="@+id/num_4"
+                style="@style/BtnNum"
+                android:text="@string/num_4" />
+
+            <Button
+                android:id="@+id/num_5"
+                style="@style/BtnNum"
+                android:text="@string/num_5" />
+
+            <Button
+                android:id="@+id/num_6"
+                style="@style/BtnNum"
+                android:text="@string/num_6" />
+
+            <Button
+                android:id="@+id/multiply"
+                style="@style/BtnCalc"
+                android:text="@string/multiplication" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LayoutNum">
+
+            <Button
+                android:id="@+id/num_3"
+                style="@style/BtnNum"
+                android:text="@string/num_3" />
+
+            <Button
+                android:id="@+id/num_2"
+                style="@style/BtnNum"
+                android:onClick="@{onOkClick::onClick}"
+                android:text="@string/num_2" />
+
+            <Button
+                android:id="@+id/num_1"
+                style="@style/BtnNum"
+                android:onClick="@{}"
+                android:text="@string/num_1" />
+
+            <Button
+                android:id="@+id/subtract"
+                style="@style/BtnCalc"
+                android:text="@string/subtraction" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/LayoutNum">
+
+            <Button
+                android:id="@+id/clear"
+                style="@style/BtnCalc"
+                android:onClick="@{onOkClick::onClick}"
+                android:text="@string/clear" />
+
+            <Button
+                android:id="@+id/num_0"
+                style="@style/BtnNum"
+                android:onClick="@{onOkClick::onClick}"
+                android:text="@string/num_0" />
+
+            <Button
+                android:id="@+id/equal"
+                style="@style/BtnCalc"
+                android:onClick="@{onOkClick::onClick}"
+                android:text="@string/equal" />
+
+            <Button
+                android:id="@+id/add"
+                style="@style/BtnCalc"
+                android:text="@string/addition" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>
