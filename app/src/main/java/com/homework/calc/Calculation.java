@@ -56,7 +56,6 @@ public class Calculation {
         return divideSum;
     }
 
-
     protected boolean checkNull(String _firstNum) {
         if (_firstNum.equals("") || _firstNum == null) {
             return false;

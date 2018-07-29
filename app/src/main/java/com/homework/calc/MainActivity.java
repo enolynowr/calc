@@ -77,10 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //PROCESS
             case R.id.equal:
+                if (!checkNull()) return;
                 Toast.makeText(this, "EQUAL", Toast.LENGTH_SHORT).show();
                 calculation.item.secondNum = Double.parseDouble(mainBinding.inputNum.getText().toString());
-                mainBinding.standByNum.setText("");
-                mainBinding.inputNum.setText(calculation.runCalc(calculation.item.firstNum, calculation.item.secondNum));
+                mainBinding.standByNum.setText(calculation.runCalc(calculation.item.firstNum, calculation.item.secondNum));
+                mainBinding.inputNum.setText("");
                 break;
             case R.id.clear:
                 Toast.makeText(this, "clear", Toast.LENGTH_SHORT).show();
@@ -92,36 +93,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // 待機テキストビューに初数字セット、演算子保存
     private void saveFirstNum(String _sign) {
-
-        if (!calculation.checkNull(mainBinding.inputNum.getText().toString())) {
-            Toast.makeText(this, "NULL IS BACK!!!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
+        if (!checkNull()) return;
         calculation.item.firstNum = Double.parseDouble(mainBinding.inputNum.getText().toString());
 
         switch (_sign) {
             case Const.DIVIDE_SIGN:
-                mainBinding.standByNum.setText(String.valueOf(calculation.item.firstNum) +" " + Const.DIVIDE_SIGN);
+                mainBinding.standByNum.setText(String.valueOf(calculation.item.firstNum) + " " + Const.DIVIDE_SIGN);
+                calculation.item.calcSign = Const.DIVIDE_SIGN;
                 break;
             case Const.MULTIPLY_SIGN:
                 mainBinding.standByNum.setText(String.valueOf(calculation.item.firstNum) + " " + Const.MULTIPLY_SIGN);
+                calculation.item.calcSign = Const.MULTIPLY_SIGN;
                 break;
             case Const.ADD_SIGN:
                 mainBinding.standByNum.setText(String.valueOf(calculation.item.firstNum) + " " + Const.ADD_SIGN);
+                calculation.item.calcSign = Const.ADD_SIGN;
                 break;
             case Const.SUBTRACT_SIGN:
-                mainBinding.standByNum.setText(String.valueOf(calculation.item.firstNum) + " "+ Const.SUBTRACT_SIGN);
+                mainBinding.standByNum.setText(String.valueOf(calculation.item.firstNum) + " " + Const.SUBTRACT_SIGN);
+                calculation.item.calcSign = Const.SUBTRACT_SIGN;
                 break;
         }
 
         mainBinding.inputNum.setText("");
     }
 
+    // 初めての数字セット
     private void setFirstNum(int _num) {
         mainBinding.inputNum.setText(mainBinding.inputNum.getText().toString() + _num);
     }
 
+    // ブランクチェック
+    private boolean checkNull() {
+        if (!calculation.checkNull(mainBinding.inputNum.getText().toString())) {
+            Toast.makeText(this, "NULL IS BACK!!!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 
 }
